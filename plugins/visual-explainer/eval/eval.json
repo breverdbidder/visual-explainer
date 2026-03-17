@@ -1,0 +1,32 @@
+{
+  "name": "visual-explainer",
+  "version": "1.0.0",
+  "description": "Binary assertions for visual-explainer HTML output quality",
+  "assertions": [
+    {"id": "VE-001", "desc": "Output file exists and is .html", "type": "file_exists", "pattern": "*.html"},
+    {"id": "VE-002", "desc": "HTML is valid (has DOCTYPE, html, head, body)", "type": "contains", "target": "<!DOCTYPE html>"},
+    {"id": "VE-003", "desc": "Contains viewport meta tag", "type": "contains", "target": "viewport"},
+    {"id": "VE-004", "desc": "Uses CSS custom properties (--bg, --surface, --text)", "type": "contains", "target": "--bg:"},
+    {"id": "VE-005", "desc": "Supports dark/light theme via prefers-color-scheme", "type": "contains", "target": "prefers-color-scheme"},
+    {"id": "VE-006", "desc": "No forbidden font Inter as primary body font", "type": "not_contains", "target": "font-family: 'Inter'"},
+    {"id": "VE-007", "desc": "No forbidden neon purple accent #8b5cf6", "type": "not_contains", "target": "#8b5cf6"},
+    {"id": "VE-008", "desc": "No forbidden gradient text on headings", "type": "not_contains", "target": "background-clip: text"},
+    {"id": "VE-009", "desc": "No emoji in section headers", "type": "regex_not_match", "pattern": "<h[2-6]>[^<]*[\\U0001F300-\\U0001F9FF]"},
+    {"id": "VE-010", "desc": "File size under 500KB", "type": "file_size_max", "max_kb": 500},
+    {"id": "VE-011", "desc": "No console errors (no broken script tags)", "type": "not_contains", "target": "src=\"undefined\""},
+    {"id": "VE-012", "desc": "Contains at least one semantic heading (h1-h3)", "type": "regex_match", "pattern": "<h[1-3]"},
+    {"id": "VE-013", "desc": "Self-contained (no local file:// references)", "type": "not_contains", "target": "file://"},
+    {"id": "VE-014", "desc": "External resources only from CDNs (fonts.googleapis, cdn)", "type": "not_contains", "target": "localhost"},
+    {"id": "VE-015", "desc": "Mermaid diagrams have zoom controls if present", "type": "conditional", "if_contains": "mermaid", "then_contains": "zoom"},
+    {"id": "VE-016", "desc": "No bare <pre class=mermaid> (must use diagram-shell)", "type": "conditional", "if_contains": "mermaid", "then_not_contains": "<pre class=\"mermaid\">"},
+    {"id": "VE-017", "desc": "Tables have proper thead/tbody if present", "type": "conditional", "if_contains": "<table", "then_contains": "<thead"},
+    {"id": "VE-018", "desc": "Code blocks have white-space: pre-wrap", "type": "conditional", "if_contains": "<pre", "then_contains": "pre-wrap"},
+    {"id": "VE-019", "desc": "Contains page title in <title> tag", "type": "regex_match", "pattern": "<title>[^<]+</title>"},
+    {"id": "VE-020", "desc": "No three-dot window chrome (AI slop)", "type": "not_contains", "target": "red-dot"},
+    {"id": "VE-021", "desc": "Has responsive design (min-width: 0 on flex/grid children)", "type": "contains", "target": "min-width: 0"},
+    {"id": "VE-022", "desc": "Respects prefers-reduced-motion", "type": "conditional", "if_contains": "@keyframes", "then_contains": "prefers-reduced-motion"},
+    {"id": "VE-023", "desc": "Brand preset: uses house navy #1E3A5F if BidDeed context", "type": "conditional", "if_contains": "BidDeed", "then_contains": "#1E3A5F"},
+    {"id": "VE-024", "desc": "Brand preset: uses house orange #F59E0B if BidDeed context", "type": "conditional", "if_contains": "BidDeed", "then_contains": "#F59E0B"},
+    {"id": "VE-025", "desc": "No animated glowing box-shadows (AI slop)", "type": "regex_not_match", "pattern": "@keyframes.*glow.*box-shadow"}
+  ]
+}
