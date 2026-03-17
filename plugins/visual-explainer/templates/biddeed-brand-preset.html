@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BidDeed.AI Brand Preset — Visual Explainer Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* BidDeed.AI / ZoneWise.AI House Brand Preset
+       Navy #1E3A5F primary, Orange #F59E0B accent/CTA
+       Inter font, bg #020617 slate-950
+       Source: zonewise-web globals.css + BRAND_COLORS.md */
+    :root {
+      --bg: #020617;
+      --surface: #0f172a;
+      --surface-elevated: #1e293b;
+      --border: rgba(148, 163, 184, 0.1);
+      --text: #e2e8f0;
+      --text-dim: #94a3b8;
+      --text-muted: #64748b;
+      --navy: #1E3A5F;
+      --navy-light: #2a5280;
+      --orange: #F59E0B;
+      --orange-dim: rgba(245, 158, 11, 0.12);
+      --green: #10b981;
+      --green-dim: rgba(16, 185, 129, 0.1);
+      --red: #ef4444;
+      --red-dim: rgba(239, 68, 68, 0.08);
+      --blue: #3b82f6;
+      --blue-dim: rgba(59, 130, 246, 0.1);
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f8fafc;
+        --surface: #ffffff;
+        --surface-elevated: #f1f5f9;
+        --border: rgba(30, 58, 95, 0.1);
+        --text: #0f172a;
+        --text-dim: #475569;
+        --text-muted: #94a3b8;
+      }
+    }
+
+    /* === LAYOUT TOKENS === */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .page { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem; }
+
+    /* === BRAND HEADER === */
+    .brand-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .brand-logo {
+      width: 32px; height: 32px;
+      background: var(--navy);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--orange);
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+    .brand-name {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--orange);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* === HERO === */
+    h1 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    .subtitle {
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+    }
+
+    /* === BADGES === */
+    .badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .badge--bid { background: var(--green-dim); color: var(--green); }
+    .badge--review { background: var(--orange-dim); color: var(--orange); }
+    .badge--skip { background: var(--red-dim); color: var(--red); }
+    .badge--info { background: var(--blue-dim); color: var(--blue); }
+
+    /* === CARDS === */
+    .ve-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .ve-card--hero {
+      border-left: 3px solid var(--orange);
+      background: linear-gradient(135deg, var(--surface), var(--orange-dim));
+      padding: 2rem;
+    }
+    .ve-card--navy {
+      border-left: 3px solid var(--navy);
+    }
+    .ve-card--recessed {
+      background: var(--bg);
+      border: 1px solid var(--border);
+    }
+    .ve-card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .ve-card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+    }
+
+    /* === KPI GRID === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .kpi {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .kpi-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--orange);
+      font-family: var(--font-mono);
+      font-variant-numeric: tabular-nums;
+    }
+    .kpi-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.25rem;
+    }
+
+    /* === SECTION LABELS (monospace dot style) === */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .section-label .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+    .section-label .dot--navy { background: var(--navy); }
+    .section-label .dot--green { background: var(--green); }
+
+    /* === TABLES === */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 0.65rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    td { color: var(--text-dim); }
+
+    /* === CODE BLOCKS === */
+    pre {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.65;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      background: var(--surface-elevated);
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .ve-card, .kpi { animation: fadeUp 0.35s ease-out both; }
+    .ve-card:nth-child(2), .kpi:nth-child(2) { animation-delay: 0.04s; }
+    .ve-card:nth-child(3), .kpi:nth-child(3) { animation-delay: 0.08s; }
+    .ve-card:nth-child(4), .kpi:nth-child(4) { animation-delay: 0.12s; }
+    @media (prefers-reduced-motion: reduce) { .ve-card, .kpi { animation: none; } }
+
+    /* === MERMAID THEME VARIABLES (BidDeed brand) === */
+    /* Use in mermaid.initialize({ theme: 'base', themeVariables: {...} })
+       primaryColor: '#1E3A5F'
+       primaryTextColor: '#e2e8f0'
+       primaryBorderColor: '#2a5280'
+       lineColor: '#F59E0B'
+       secondaryColor: '#0f172a'
+       tertiaryColor: '#334155'
+       fontFamily: 'Inter, system-ui, sans-serif'
+       fontSize: '14px'
+    */
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="brand-header">
+      <div class="brand-logo">B</div>
+      <span class="brand-name">BidDeed.AI</span>
+    </div>
+    <h1>Brand Preset Template</h1>
+    <p class="subtitle">Navy #1E3A5F + Orange #F59E0B + Inter + Slate-950 bg. Copy CSS variables into any visual-explainer generation.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-number">19</div><div class="kpi-label">Properties</div></div>
+      <div class="kpi"><div class="kpi-number">4</div><div class="kpi-label">BID</div></div>
+      <div class="kpi"><div class="kpi-number">3</div><div class="kpi-label">Review</div></div>
+      <div class="kpi"><div class="kpi-number">12</div><div class="kpi-label">Skip</div></div>
+    </div>
+
+    <div class="ve-card ve-card--hero">
+      <div class="section-label"><span class="dot"></span> Hero Card</div>
+      <h2>Elevated hero treatment with orange accent border</h2>
+      <p>Use for executive summaries, key findings, and primary content. The gradient background creates visual hierarchy.</p>
+    </div>
+
+    <div class="ve-card ve-card--navy">
+      <div class="section-label"><span class="dot dot--navy"></span> Navy Card</div>
+      <h2>Secondary content with navy accent</h2>
+      <p>Use for architecture overviews, technical details, and supporting information.</p>
+    </div>
+
+    <div class="ve-card ve-card--recessed">
+      <div class="section-label"><span class="dot dot--green"></span> Recessed Card</div>
+      <h2>Compact reference content</h2>
+      <p>Use for code blocks, file lists, and secondary reference material.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Badge</th><th>Example</th><th>Usage</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge badge--bid">BID</span></td><td>≥75% bid/judgment</td><td>Positive/go decisions</td></tr>
+        <tr><td><span class="badge badge--review">REVIEW</span></td><td>60-74% bid/judgment</td><td>Needs attention</td></tr>
+        <tr><td><span class="badge badge--skip">SKIP</span></td><td>&lt;60% bid/judgment</td><td>Negative/no-go</td></tr>
+        <tr><td><span class="badge badge--info">INFO</span></td><td>Metadata</td><td>Neutral information</td></tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
